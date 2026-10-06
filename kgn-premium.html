@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>K. G. N. Machinery Store | Paint & Hardware, Bewali</title>
+<meta name="description" content="Bewali ki paint, hardware aur machinery ki dukaan. Roz 7 AM - 9 PM. Call ya WhatsApp karein.">
+<style>
+:root{--ink:#14161c;--chalk:#faf8f3;--sand:#ece7da;--red:#d63a2f;--gold:#f2b705;--blue:#1f5fbf;--green:#1f9d57;--muted:#656a75;--shade:#d63a2f}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--chalk);color:var(--ink);line-height:1.65;padding-bottom:84px}
+.wrap{max-width:720px;margin:auto;padding:0 20px}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;max-width:720px;margin:auto}
+.logo{font-family:Georgia,serif;font-weight:700;font-size:1.05rem}
+.status{font-size:.82rem;font-weight:700;padding:5px 12px;border-radius:99px;background:#e3f5ea;color:var(--green)}
+.status.closed{background:#fbe6e4;color:var(--red)}
+
+/* hero with live shade */
+.hero{background:var(--shade);color:#fff;transition:background .4s;padding:44px 0 36px}
+.hero.light{color:var(--ink)}
+.hero h1{font-size:2.5rem;font-weight:700;letter-spacing:-1px}
+.hero p{margin-top:14px;font-size:1.08rem;max-width:30ch;opacity:.92}
+.cta{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+.btn{display:inline-block;padding:13px 22px;border-radius:12px;font-weight:700;text-decoration:none;border:0;font-size:1rem;cursor:pointer;font-family:inherit}
+.btn.main{background:var(--ink);color:#fff}
+.btn.ghost{background:rgba(255,255,255,.2);color:inherit;border:2px solid currentColor}
+
+/* shade picker */
+.picker{margin-top:-26px;background:#fff;border-radius:18px;padding:18px;box-shadow:0 10px 30px rgba(20,22,28,.14)}
+.picker h2{font-size:1.15rem;margin-bottom:4px}
+.picker small{color:var(--muted)}
+.dots{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin:14px 0}
+.dot{aspect-ratio:1;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px #d8d3c4;cursor:pointer}
+.dot[aria-pressed="true"]{box-shadow:0 0 0 3px var(--ink)}
+.pick-row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+#shadeName{font-weight:700}
+
+/* sections */
+section{padding:44px 0}
+section h2{font-size:1.7rem;margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cat{background:#fff;border:1px solid var(--sand);border-radius:14px;padding:18px 14px}
+.cat i{display:block;width:34px;height:6px;border-radius:3px;margin-bottom:12px}
+.cat h3{font-size:1.05rem;margin-bottom:4px}
+.cat p{font-size:.9rem;color:var(--muted)}
+.dark{background:var(--ink);color:#fff}
+.dark .sub{color:#b5b9c4}
+.why{list-style:none}
+.why li{padding:14px 0;border-bottom:1px solid #2c303b;display:flex;gap:12px}
+.why li:last-child{border:0}
+.why b{color:var(--gold);min-width:20px}
+.rate{display:flex;align-items:baseline;gap:10px;margin-bottom:6px}
+.rate strong{font-family:Georgia,serif;font-size:3rem;color:var(--gold)}
+
+/* info + form */
+.card{background:#fff;border:1px solid var(--sand);border-radius:16px;padding:20px}
+.row{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--sand)}
+.row:last-of-type{border:0}
+.row b{min-width:78px}
+label{display:block;font-weight:700;margin:12px 0 6px;font-size:.92rem}
+input,textarea{width:100%;padding:12px;border:1.5px solid #d8d3c4;border-radius:10px;font:inherit;background:var(--chalk);color:var(--ink)}
+input:focus,textarea:focus{outline:3px solid var(--gold);border-color:var(--ink)}
+.wa-btn{background:var(--green);color:#fff;width:100%;margin-top:16px}
+
+footer{text-align:center;color:var(--muted);font-size:.85rem;padding:24px 20px}
+
+/* sticky bar */
+.bar{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:rgba(250,248,243,.96);border-top:1px solid var(--sand);backdrop-filter:blur(8px)}
+.bar a{flex:1;text-align:center;padding:13px 6px;border-radius:12px;text-decoration:none;font-weight:700;color:#fff}
+.b1{background:var(--blue)}.b2{background:var(--green)}.b3{background:var(--ink)}
+a:focus-visible,button:focus-visible,.dot:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.hero{transition:none}html{scroll-behavior:auto}}
+@media(min-width:600px){.hero h1{font-size:3.4rem}}
+</style>
+</head>
+<body>
+
+<div class="hero" id="hero">
+  <div class="top">
+    <span class="logo">K. G. N. Machinery Store</span>
+    <span class="status" id="status">Roz 7 AM - 9 PM</span>
+  </div>
+  <div class="wrap">
+    <h1>Har deewar ko chahiye apna rang.</h1>
+    <p>Bewali ki bharosemand dukaan: paint, hardware aur machinery, sab ek jagah.</p>
+    <div class="cta">
+      <a class="btn main" href="tel:+91XXXXXXXXXX">Abhi call karein</a>
+      <a class="btn ghost" href="#shades">Rang chunein</a>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="picker" id="shades">
+    <h2>Apna rang chunein</h2>
+    <small>Rang par tap karein, upar poora page badal jayega.</small>
+    <div class="dots" id="dots"></div>
+    <div class="pick-row">
+      <span>Chuna hua: <span id="shadeName">Laal</span></span>
+      <button class="btn main" id="shadeAsk" type="button">Is rang ke liye poochein</button>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>Dukaan me kya milta hai</h2>
+    <p class="sub">Ghar, dukaan ya factory, jo bhi kaam ho, saaman yahin mil jayega.</p>
+    <div class="grid">
+      <div class="cat"><i style="background:var(--red)"></i><h3>Paint &amp; Colour</h3><p>Interior, exterior, enamel, primer</p></div>
+      <div class="cat"><i style="background:var(--blue)"></i><h3>Hardware</h3><p>Nuts, bolts, taale, fittings</p></div>
+      <div class="cat"><i style="background:var(--green)"></i><h3>Tools &amp; Machinery</h3><p>Hand tools aur machine supplies</p></div>
+      <div class="cat"><i style="background:var(--gold)"></i><h3>Brush &amp; Roller</h3><p>Painting ka poora saaman</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="wrap">
+    <div class="rate"><strong>4.3</strong><span>Google rating</span></div>
+    <h2>Log yahan kyun aate hain</h2>
+    <p class="sub">Customers ne dukaan ko Google par pasand kiya hai.</p>
+    <ul class="why">
+      <li><b>1</b><span>Shelves bhari hui, rang aur saaman ki badi range</span></li>
+      <li><b>2</b><span>Subah 7 baje se raat 9 baje tak, hafte ke saatho din</span></li>
+      <li><b>3</b><span>Call ya WhatsApp par pehle hi pooch lein</span></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Dukaan par aayein</h2>
+    <p class="sub">Unchahar Road par, Bewali me.</p>
+    <div class="card">
+      <div class="row"><b>Pata</b><span>2C2J+QJW, Unchahar Rd, Bewali, Uttar Pradesh 229127</span></div>
+      <div class="row"><b>Samay</b><span>7:00 AM - 9:00 PM, Somvar se Ravivar</span></div>
+      <div class="row"><b>Phone</b><a href="tel:+91XXXXXXXXXX">+91 XXXXXXXXXX</a></div>
+      <a class="btn main" style="margin-top:14px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=K.+G.+N.+Machinery+Store+Bewali+Uttar+Pradesh">Google Maps kholein</a>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <h2>Saaman ki jaankari bhejein</h2>
+    <p class="sub">Naam aur saaman likhein, WhatsApp par seedha dukaan tak pahunchega.</p>
+    <div class="card">
+      <label for="nm">Aapka naam</label>
+      <input id="nm" autocomplete="name">
+      <label for="it">Kya chahiye</label>
+      <textarea id="it" rows="3" placeholder="Jaise: 20 litre white paint, 2 brush"></textarea>
+      <button class="btn wa-btn" id="send" type="button">WhatsApp par bhejein</button>
+    </div>
+  </div>
+</section>
+
+<footer>&copy; K. G. N. Machinery Store, Bewali<br>Website banane wale: [Aapka Naam / Number]</footer>
+
+<nav class="bar" aria-label="Sampark">
+  <a class="b1" href="tel:+91XXXXXXXXXX">Call</a>
+  <a class="b2" id="waBar" href="#" target="_blank" rel="noopener">WhatsApp</a>
+  <a class="b3" href="https://www.google.com/maps/search/?api=1&query=K.+G.+N.+Machinery+Store+Bewali+Uttar+Pradesh" target="_blank" rel="noopener">Raasta</a>
+</nav>
+
+<script>
+var PHONE="91XXXXXXXXXX"; // dukaan ka number yahan badlein (91 ke saath, bina + ke)
+var shades=[
+ ["Laal","#d63a2f"],["Peela","#f2b705"],["Hara","#2e9e5b"],["Neela","#1f5fbf"],
+ ["Aasmani","#7ec3e6"],["Narangi","#ee7b30"],["Gulabi","#e87fa6"],["Baingani","#6a3fa0"],
+ ["Cream","#efe3c2"],["Pista","#a9d18e"],["Bhoora","#8a5a3b"],["Dhuaan Grey","#6b7280"]
+];
+var cur=shades[0], hero=document.getElementById("hero"), dots=document.getElementById("dots");
+function wa(t){return "https://wa.me/"+PHONE+"?text="+encodeURIComponent(t)}
+function light(h){var n=parseInt(h.slice(1),16),r=n>>16,g=(n>>8)&255,b=n&255;return (r*299+g*587+b*114)/1000>150}
+function setShade(i){
+  cur=shades[i];
+  document.documentElement.style.setProperty("--shade",cur[1]);
+  hero.classList.toggle("light",light(cur[1]));
+  document.getElementById("shadeName").textContent=cur[0];
+  [].forEach.call(dots.children,function(d,k){d.setAttribute("aria-pressed",k===i)});
+}
+shades.forEach(function(s,i){
+  var b=document.createElement("button");
+  b.type="button";b.className="dot";b.style.background=s[1];
+  b.setAttribute("aria-label",s[0]);b.onclick=function(){setShade(i)};
+  dots.appendChild(b);
+});
+setShade(0);
+document.getElementById("shadeAsk").onclick=function(){
+  window.open(wa("Namaste, mujhe "+cur[0]+" rang ke baare me jaankari chahiye."),"_blank");
+};
+document.getElementById("send").onclick=function(){
+  var n=document.getElementById("nm").value.trim(), t=document.getElementById("it").value.trim();
+  window.open(wa("Namaste, main "+(n||"ek customer")+" hun. Mujhe chahiye: "+(t||"jaankari")),"_blank");
+};
+document.getElementById("waBar").href=wa("Namaste, mujhe jaankari chahiye.");
+
+// live open/closed
+(function(){
+  var h=new Date().getHours(), s=document.getElementById("status");
+  if(h>=7&&h<21){s.textContent="Abhi khuli hai"}
+  else{s.textContent="Band, subah 7 baje khulegi";s.classList.add("closed")}
+})();
+</script>
+</body>
+</html>
